@@ -1,5 +1,7 @@
 # MinecraftStats Docker file
-FROM python:3
+FROM python:3-slim
+
+RUN apt-get update && apt-get install -y git && apt-get clean
 
 # database update frequency (minutes)
 ENV UPDATE_FREQ=10
