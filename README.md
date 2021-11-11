@@ -4,14 +4,15 @@ docker file for  https://github.com/pdinklag/MinecraftStats
 # usage
 ```
 # build the image
-docker build -t minecraftstats .
+docker build --build-arg buildDate=$(date +'%Y-%m-%d') \
+             -t minecraftstats .
 # remove previously created container
 docker rm mcstats
 # run the container
 docker run -p 8000:8000 --name mcstats \
    --volume /path/to/minecraft/world/minecraft:/minecraft:ro \
    --volume /path/to/config/directory/to/store/config.json/config:/config \
-   --env UPDATE_FREQ=60 \
+   --env MS_UPDATE_FREQ=60 \
    minecraftstats
 # save the image
 docker save minecraftstats:latest |gzip > minecraftstats.tgz

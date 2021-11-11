@@ -22,7 +22,7 @@ do
 		*)
 			echo "unknown option $OPT"
 			usage
-			exit 1
+²			exit 1
 	esac
 done
 
@@ -31,6 +31,8 @@ then
 	usage
 	exit 1
 fi
+
+# echo $UPDATE_FREQ,$PORT
 
 # start "cron"
 /usr/src/app/cron.sh $UPDATE_FREQ &
