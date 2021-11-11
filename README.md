@@ -26,10 +26,10 @@ If you want to modify it, make this directory accessible to your host via the `-
 # Variables
 The container behaviour can be modified via environment variables of docker (`--env` option)
 
-* MS_UPDATE_FREQ
+* **MS_UPDATE_FREQ**
   * frequency in minutes to update MinecraftStats database
   * default: 10
-* MS_LISTEN_PORT
+* **MS_LISTEN_PORT**
   * listening port for the python webserver
   * default: 8000
 
