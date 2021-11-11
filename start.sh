@@ -1,11 +1,44 @@
 #!/bin/bash
 
+function usage() {
+	echo "usage: $0 -u <update freq in minutes> -p <http listening port>"
+	exit 1
+}
 
-/usr/src/app/cron.sh $1 &
+# get cmdline parameters
+while getopts "hu:p:" OPT
+do
+	case $OPT in
+		h)
+			usage
+			exit 0
+			;;
+		u)
+			UPDATE_FREQ=$OPTARG
+			;;
+		p)
+			PORT=$OPTARG
+			;;
+		*)
+			echo "unknown option $OPT"
+			usage
+			exit 1
+	esac
+done
 
+if [ -z "$UPDATE_FREQ" -o -z "$PORT" ]
+then
+	usage
+	exit 1
+fi
+
+# start "cron"
+/usr/src/app/cron.sh $UPDATE_FREQ &
+
+# start webserver
 cd /usr/src/app/MinecraftStats/
 echo "Starting webserver ..."
-python -m http.server $2 &
+python -m http.server $PORT &
 
 # Wait for any process to exit
 wait -n

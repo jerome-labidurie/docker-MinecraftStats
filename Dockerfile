@@ -1,7 +1,8 @@
 # MinecraftStats Docker file
 FROM python:3-slim
 
-RUN apt-get update && apt-get install -y git && apt-get clean
+RUN apt-get update && apt-get install -y git \
+    && rm -rf /var/lib/apt/lists/*
 
 # database update frequency (minutes)
 ENV UPDATE_FREQ=10
@@ -18,4 +19,4 @@ RUN git clone https://github.com/pdinklag/MinecraftStats.git
 
 EXPOSE ${LISTEN_PORT}
 
-CMD /usr/src/app/start.sh ${UPDATE_FREQ} ${LISTEN_PORT}
+CMD /usr/src/app/start.sh -u ${UPDATE_FREQ} -p ${LISTEN_PORT}
