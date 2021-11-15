@@ -11,11 +11,11 @@ You can mount it by using the `--volume` option of your docker run command. eg :
 --volume /home/user/.minecraft/saves/:/minecraft
 ```
 
-This can be later changed via MinecraftStats json configuration file.
+This can later be changed via MinecraftStats json configuration file.
 
 # MinecraftStats configuration
 
-The container uses /config/config.json file for the configuration of MinecraftStats.
+The container uses `/config/config.json` file for the configuration of MinecraftStats.
 If not present a default one will be created during startup.
 
 If you want to modify it, make this directory accessible to your host via the `--volume` option. eg:
@@ -27,7 +27,7 @@ If you want to modify it, make this directory accessible to your host via the `-
 The container behaviour can be modified via environment variables of docker (`--env` option)
 
 * **MS_UPDATE_FREQ**
-  * frequency in minutes to update MinecraftStats database
+  * delay (in minutes) between updates of MinecraftStats database
   * default: 10
 * **MS_LISTEN_PORT**
   * listening port for the python webserver

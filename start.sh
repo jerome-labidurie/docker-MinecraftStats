@@ -34,11 +34,16 @@ fi
 
 # echo $UPDATE_FREQ,$PORT
 
+cd /usr/src/app/MinecraftStats/
+
+# update to last version
+echo "Updating MinecraftStats ..."
+git pull
+
 # start "cron"
 /usr/src/app/cron.sh $UPDATE_FREQ &
 
 # start webserver
-cd /usr/src/app/MinecraftStats/
 echo "Starting webserver ..."
 python -m http.server $PORT &
 

@@ -20,7 +20,8 @@ WORKDIR /usr/src/app
 COPY start.sh .
 COPY cron.sh .
 
-RUN git clone --depth 1 https://github.com/pdinklag/MinecraftStats.git
+RUN git clone --depth 1 https://github.com/pdinklag/MinecraftStats.git \
+    && git config --global pull.ff only
 
 EXPOSE ${MS_LISTEN_PORT}
 
